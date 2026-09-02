@@ -1,0 +1,11 @@
+name = "morsel-pastry-studio"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+
+# Add these only when connecting real test credentials:
+# PAYSTACK_SECRET_KEY = "..."
+# FLW_SECRET_KEY = "..."

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" role="img" aria-labelledby="title desc">
+<title id="title">Morsel Pastry Studio</title><desc id="desc">Morsel pastry monogram and editorial wordmark</desc>
+<g transform="translate(18 18)">
+  <rect x="0" y="0" width="144" height="144" rx="42" fill="#6A3655"/>
+  <path d="M34 119V43l38 43 38-43v76" fill="none" stroke="#FFF8EE" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M37 69c10-17 22-25 35-25s25 8 35 25" fill="none" stroke="#D5AA6C" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="72" cy="26" r="7" fill="#D5AA6C"/>
+</g>
+<text x="190" y="92" fill="#191310" font-family="Georgia, 'Times New Roman', serif" font-size="67" font-weight="700" letter-spacing="10">MORSEL</text>
+<path d="M193 113H590" stroke="#6A3655" stroke-width="2" opacity=".55"/>
+<circle cx="391" cy="113" r="3.5" fill="#D5AA6C"/>
+<text x="391" y="141" text-anchor="middle" fill="#756A67" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="6">PASTRY STUDIO</text>
+</svg>

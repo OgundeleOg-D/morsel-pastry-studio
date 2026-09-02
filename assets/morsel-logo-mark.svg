@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+<title id="title">Morsel M monogram</title><desc id="desc">Morsel pastry studio monogram</desc>
+<circle cx="80" cy="80" r="74" fill="#4A2336"/>
+<path d="M42 112V48l38 44 38-44v64" fill="none" stroke="#FFF8EE" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43 75c11-18 24-27 37-27s26 9 37 27" fill="none" stroke="#FFF8EE" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+<circle cx="116" cy="37" r="8" fill="#C79A58"/>
+</svg>
