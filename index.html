@@ -501,6 +501,46 @@ body{background:var(--cream);color:var(--ink);overflow-x:hidden}
 .checkout-overlay{padding:10px}.checkout-panel{border-radius:22px;max-height:96vh}.checkout-grid{display:block}.checkout-copy{padding:48px 24px 34px}.checkout-copy h2,.success-panel h2{font-size:48px}.checkout-mini{margin-top:22px}.checkout-form{padding:27px 20px 28px}.form-row.two,.choice-row,.payment-grid{grid-template-columns:1fr}.success-panel{padding:70px 25px 35px}.checkout-form label{font-size:9px}
 }
 </style>
+<style id="morsel-mobile-floating-cart-final">
+/* Final surgical mobile-only positioning: keep the existing bag floating clear of the header/menu. */
+@media (max-width:760px){
+  .header-actions{
+    position:fixed !important;
+    left:auto !important;
+    right:18px !important;
+    top:auto !important;
+    bottom:calc(84px + env(safe-area-inset-bottom)) !important;
+    z-index:95 !important;
+    width:50px !important;
+    height:50px !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:grid !important;
+    place-items:center !important;
+    border:1px solid rgba(25,19,16,.14) !important;
+    border-radius:50% !important;
+    background:rgba(255,250,242,.96) !important;
+    box-shadow:0 10px 28px rgba(36,22,18,.16) !important;
+    backdrop-filter:blur(14px);
+  }
+  .header-actions .header-shop,.header-actions .icon{display:none !important}
+  .header-actions .bag{
+    display:grid !important;
+    place-items:center !important;
+    width:50px !important;
+    height:50px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:50% !important;
+  }
+  .header-actions .bag svg{width:24px !important;height:24px !important}
+  .header-actions .count{top:-3px !important;right:-3px !important;min-width:19px !important;height:19px !important;font-size:10px !important}
+}
+@media (max-width:430px){
+  .header-actions{right:16px !important;bottom:calc(84px + env(safe-area-inset-bottom)) !important;width:50px !important;height:50px !important}
+  .header-actions .bag{width:50px !important;height:50px !important}
+}
+</style>
 </head>
 <body>
 <div id="app"></div>
