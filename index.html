@@ -444,6 +444,9 @@ body{background:var(--cream);color:var(--ink);overflow-x:hidden}
 <style id="morsel-mobile-floating-cart">
 /* Surgical mobile-only refinement: move the existing bag control into a floating position. */
 @media (max-width:760px){
+  /* The sticky header's backdrop-filter can trap fixed descendants inside the header.
+     Disable only that mobile blur so the floating bag is fixed to the viewport. */
+  .header{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
   .header-actions{
     position:fixed;
     left:auto;
