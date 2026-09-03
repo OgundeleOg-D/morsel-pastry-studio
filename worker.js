@@ -18,6 +18,7 @@ async function paystackInitialize(env, body) {
       amount: Math.round(Number(body.amount) * 100),
       currency: body.currency || 'NGN',
       reference: body.reference,
+      callback_url: new URL('/api/paystack/callback', body.origin).toString(),
       first_name: body.firstName,
       last_name: body.lastName,
       phone: body.phone,
@@ -27,6 +28,22 @@ async function paystackInitialize(env, body) {
   const data = await response.json();
   if (!response.ok || !data.status) return json({ error: data.message || 'Unable to initialize Paystack transaction.' }, 502);
   return json({ authorization_url: data.data.authorization_url, reference: data.data.reference, provider: 'paystack' });
+}
+
+async function paystackCallback(env, url) {
+  const reference = url.searchParams.get('reference');
+  if (!reference) return Response.redirect(new URL('/?payment=failed', url), 302);
+  if (!env.PAYSTACK_SECRET_KEY) return Response.redirect(new URL(`/?payment=failed&reference=${encodeURIComponent(reference)}`, url), 302);
+
+  const response = await fetch(`https://api.paystack.co/transaction/verify/${encodeURIComponent(reference)}`, {
+    headers: { Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}` }
+  });
+  const data = await response.json();
+  const transaction = data?.data;
+  const success = response.ok && data.status === true && transaction?.status === 'success';
+  const redirect = new URL('/?payment=' + (success ? 'success' : 'failed'), url);
+  redirect.searchParams.set('reference', reference);
+  return Response.redirect(redirect, 302);
 }
 
 async function flutterwaveInitialize(env, body) {
@@ -58,6 +75,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/api/health') return json({ ok: true, service: 'morsel', mode: env.PAYSTACK_SECRET_KEY || env.FLW_SECRET_KEY ? 'configured' : 'demo' });
+    if (request.method === 'GET' && url.pathname === '/api/paystack/callback') return paystackCallback(env, url);
     if (request.method === 'POST' && (url.pathname === '/api/paystack/initialize' || url.pathname === '/api/flutterwave/initialize')) {
       try {
         const body = await request.json();
